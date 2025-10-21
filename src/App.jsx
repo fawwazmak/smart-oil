@@ -65,7 +65,7 @@ function AppContent() {
 
           #183e51 */}
 
-        <div className='md:w-11/12 min-h-screen overflow-y-auto'>
+        <div className={`${dontShowNavbar ? 'md:w-full' : 'md:w-11/12'} min-h-screen overflow-y-auto`}>
           <Routes>
             <Route path='/' element={<DashboardPage />} />
             <Route path='/forecasting' element={<ForecastingPage />} />

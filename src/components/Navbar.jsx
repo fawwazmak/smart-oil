@@ -12,7 +12,7 @@ import { LuNotepadText, LuFuel } from "react-icons/lu";
 
 const Navbar = () => {
   return (
-    <div className='flex flex-col items-center bg-[#191f2d] text-gray-500 text-center p-4 space-y-8 border-r md:h-full w-full'>
+    <div className='flex lg:flex-col lg:justify-start justify-between flex-row flex-wrap items-center bg-[#191f2d] text-gray-500 text-center p-4 space-y-8 border-r md:h-full w-full'>
         <img src={logo} alt="Logo" className='block h-16 w-16' />
 
         <NavLink to="/" 

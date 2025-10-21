@@ -17,7 +17,7 @@ function AppContent() {
 
   return (
     <>
-      <div className='flex md:flex-row flex-col md:h-screen md:overflow-hidden w-full'>
+      <div className='flex md:flex-row flex-col md:h-screen md:overflow-hidden w-full font-["Manrope"]'>
         {!dontShowNavbar &&
           <div className='md:w-1/12'>
             <Navbar />
@@ -65,7 +65,7 @@ function AppContent() {
 
           #183e51 */}
 
-        <div className='md:w-11/12 min-h-screen'>
+        <div className='md:w-11/12 min-h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-[#183e51] scrollbar-track-[#101624]'>
           <Routes>
             <Route path='/' element={<DashboardPage />} />
             <Route path='/forecasting' element={<ForecastingPage />} />

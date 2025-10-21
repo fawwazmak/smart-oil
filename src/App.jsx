@@ -6,7 +6,7 @@ import SignUpPage from './pages/SignUpPage';
 import Navbar from './components/Navbar';
 import DashboardPage from './pages/DashboardPage';
 import ForecastingPage from './pages/ForecastingPage';
-import TankMonitoringPage from './pages/TankMonitoring';
+import TankMonitoringPage from './pages/TankMonitoringPage';
 import BlockChainLedgerPage from './pages/BlockChainLedgerPage'
 import AccountPage from './pages/AccountPage';
 
@@ -65,7 +65,7 @@ function AppContent() {
 
           #183e51 */}
 
-        <div className='md:w-11/12 min-h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-[#183e51] scrollbar-track-[#101624]'>
+        <div className='md:w-11/12 min-h-screen overflow-y-auto'>
           <Routes>
             <Route path='/' element={<DashboardPage />} />
             <Route path='/forecasting' element={<ForecastingPage />} />

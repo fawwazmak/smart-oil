@@ -9,11 +9,17 @@ import ForecastingPage from './pages/ForecastingPage';
 import TankMonitoringPage from './pages/TankMonitoringPage';
 import BlockChainLedgerPage from './pages/BlockChainLedgerPage'
 import AccountPage from './pages/AccountPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 function AppContent() {
   const location = useLocation();
-  const dontShowNavbar = ['/login', '/register'].some(path => location.pathname.includes(path));
+
+  const hideOnPaths = ['/login', '/register'];
+  const knownPaths = ['/', '/forecasting', '/tankMonitoring', '/blockChainLedger', '/account', '/login', '/register'];
+
+  // hide navbar on login/register or when the path is not one of the known routes (NotFound)
+  const dontShowNavbar = hideOnPaths.some(path => location.pathname.includes(path)) || !knownPaths.includes(location.pathname);
 
   return (
     <>
@@ -74,6 +80,7 @@ function AppContent() {
             <Route path='/account' element={<AccountPage />} />
             <Route path='/login' element={<SignInPage />} />
             <Route path='/register' element={<SignUpPage />} />
+            <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </div>
       </div>

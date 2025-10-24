@@ -26,13 +26,9 @@ const SignupPage = () => {
 
   // Live password check
   const handlePasswordChange = (value, isConfirm = false) => {
-    if (isConfirm) {
-      setConfirmPassword(value);
-      setPasswordMatch(password && value ? password === value : null);
-    } else {
-      setPassword(value);
-      setPasswordMatch(confirmPassword && value ? confirmPassword === value : null);
-    }
+    if (isConfirm) setConfirmPassword(value);
+    else setPassword(value);
+    setPasswordMatch(isConfirm ? value === password : confirmPassword === value);
   };
 
   return (
@@ -89,19 +85,14 @@ const SignupPage = () => {
             <label htmlFor="password" className="block text-sm mb-1">Password</label>
             <input
               name="password"
-              id="password"
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => handlePasswordChange(e.target.value)}
-              placeholder="••••••••"
-              required
-              className="w-full p-3 rounded-lg bg-[#191f2d] border border-[#2b313f] 
-                         text-white placeholder-gray-400 focus:outline-none focus:border-[#183e51]"
-            />
-            <span
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9 text-gray-400 cursor-pointer"
-            >
+            id="password"
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => handlePasswordChange(e.target.value)}
+            placeholder="••••••••"
+            required
+            className="w-full p-3 rounded-lg bg-[#191f2d] border border-[#2b313f] text-white placeholder-gray-400 focus:outline-none focus:border-[#183e51]" />
+            <span onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-9 text-gray-400 cursor-pointer">
               {showPassword ? <EyeOffIcon size={20} /> : <EyeIcon size={20} />}
             </span>
           </div>

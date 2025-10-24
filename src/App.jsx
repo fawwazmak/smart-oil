@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import './App.css'
+import './App.css';
+import { Menu } from "lucide-react";
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import Navbar from './components/Navbar';
@@ -14,77 +15,64 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function AppContent() {
   const location = useLocation();
-
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const hideOnPaths = ['/login', '/register'];
   const knownPaths = ['/', '/forecasting', '/tankMonitoring', '/blockChainLedger', '/account', '/login', '/register'];
 
-  // hide navbar on login/register or when the path is not one of the known routes (NotFound)
   const dontShowNavbar = hideOnPaths.some(path => location.pathname.includes(path)) || !knownPaths.includes(location.pathname);
 
+  
   return (
-    <>
-      <div className='flex md:flex-row flex-col md:h-screen md:overflow-hidden w-full font-["Manrope"]'>
-        {!dontShowNavbar &&
-          <div className='md:w-1/12'>
+    <div className='flex md:flex-row flex-col md:static relative md:h-screen md:overflow-hidden w-full font-["Manrope"] bg-[#101624] text-white'>
+      {/* HAMBURGER (mobile only) */}
+      {!dontShowNavbar && (
+        <button
+          className="md:hidden absolute top-4 left-4 z-50 bg-[#183d50] p-2 rounded-lg"
+          onClick={() => setSidebarOpen(true)}
+        >
+          <Menu className="w-6 h-6 text-white" />
+        </button>
+      )}
+
+      {/* SIDEBAR */}
+      {!dontShowNavbar && (
+        <>
+          <div
+            className={`fixed md:static top-0 left-0 z-50 h-full bg-[#303644] transition-transform duration-300 ease-in-out ${
+              sidebarOpen ? "translate-x-0" : "-translate-x-full"
+            } md:translate-x-0 md:w-1/12 w-3/4 max-w-xs`}
+          >
             <Navbar />
           </div>
-        }
 
-          {/* 
-          #191f2d – dominant background shade
+          {/* OVERLAY (mobile only) */}
+          {sidebarOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
+        </>
+      )}
 
-          #151b29 – deep navy accent
-
-          #101624 – dark panel background
-
-          #171e28 – subtle contrast for sections
-
-          #171d2b – medium-dark tone
-
-          #101721 – card shadow or border tone
-
-          #141a28 – background variation
-
-          #161c2a – base background gradient tone
-
-          #1a202e – hover or highlight area tone
-
-          #161d27 
-          
-          #2d3341 – card border / light outline
-
-          #2b313f – panel edge tone
-
-          #183d50 – cyan-blue accent (used for icons, charts, and buttons)
-
-          #2f3543 – mid-dark overlay tone
-
-          #303644 – navigation sidebar
-
-          #3e414a – subtle highlight gray
-
-          #2a303e – inactive state tone
-
-          #353b49 – mild shadow gray
-
-          #173e51 – bright cyan-blue highlight (e.g., chart lines)
-
-          #183e51 */}
-
-        <div className={`${dontShowNavbar ? 'md:w-full' : 'md:w-11/12'} min-h-screen overflow-y-auto`}>
-          <Routes>
-            <Route path='/' element={<DashboardPage />} />
-            <Route path='/forecasting' element={<ForecastingPage />} />
-            <Route path='/tankMonitoring' element={<TankMonitoringPage />} />
-            <Route path='/blockChainLedger' element={<BlockChainLedgerPage />} />
-            <Route path='/account' element={<AccountPage />} />
-            <Route path='/login' element={<SignInPage />} />
-            <Route path='/register' element={<SignUpPage />} />
-            <Route path='*' element={<NotFoundPage />} />
-          </Routes>
-        </div>
+      {/* MAIN CONTENT */}
+      <div
+        className={`${
+          dontShowNavbar ? "md:w-full" : "md:w-11/12"
+        } min-h-screen overflow-y-auto`}
+      >
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/forecasting" element={<ForecastingPage />} />
+          <Route path="/tankMonitoring" element={<TankMonitoringPage />} />
+          <Route path="/blockChainLedger" element={<BlockChainLedgerPage />} />
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/login" element={<SignInPage />} />
+          <Route path="/register" element={<SignUpPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

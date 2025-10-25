@@ -24,7 +24,6 @@ function AppContent() {
   
   return (
     <div className='flex md:flex-row flex-col md:static relative md:h-screen md:overflow-hidden w-full font-["Manrope"] bg-[#101624] text-white'>
-      {/* HAMBURGER (mobile only) */}
       {!dontShowNavbar && (
         <button
           className="md:hidden absolute top-4 left-4 z-50 bg-[#183d50] p-2 rounded-lg"
@@ -42,7 +41,7 @@ function AppContent() {
               sidebarOpen ? "translate-x-0" : "-translate-x-full"
             } md:translate-x-0 md:w-1/12 w-3/4 max-w-xs`}
           >
-            <Navbar />
+            <Navbar onLinkClick={() => setSidebarOpen(false)} />
           </div>
 
           {/* OVERLAY (mobile only) */}

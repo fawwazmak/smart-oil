@@ -10,12 +10,12 @@ import { LuNotepadText, LuFuel } from "react-icons/lu";
 
 
 
-const Navbar = () => {
+const Navbar = ({onLinkClick }) => {
   return (
     <div className='flex h-full flex-col justify-start items-center bg-[#191f2d] text-gray-500 text-center p-4 space-y-8 border-r md:h-full w-full'>
         <img src={logo} alt="Logo" className='block h-16 w-16' />
 
-        <NavLink to="/" 
+        <NavLink onClick={onLinkClick} to="/" 
             className={({ isActive }) => 
             `rounded transition-colors flex flex-col items-center ${
                 isActive 
@@ -28,7 +28,7 @@ const Navbar = () => {
             <span>Dashboard</span>
         </NavLink>
 
-        <NavLink to="/forecasting"
+        <NavLink onClick={onLinkClick} to="/forecasting"
             className={({ isActive }) => 
             `rounded transition-colors flex flex-col items-center ${
                 isActive 
@@ -41,7 +41,7 @@ const Navbar = () => {
             <span>AI forecasting</span>
         </NavLink>
 
-        <NavLink to="/tankMonitoring"
+        <NavLink onClick={onLinkClick} to="/tankMonitoring"
             className={({ isActive }) => 
             `rounded transition-colors flex flex-col items-center ${
                 isActive 
@@ -54,7 +54,7 @@ const Navbar = () => {
             <span>Tank Monitoring</span>
         </NavLink>
 
-        <NavLink to="/blockChainLedger"
+        <NavLink onClick={onLinkClick} to="/blockChainLedger"
             className={({ isActive }) => 
             `rounded transition-colors flex flex-col items-center ${
                 isActive 
@@ -67,7 +67,7 @@ const Navbar = () => {
             <span>Blockchain Ledger</span>
         </NavLink>
         
-        <NavLink to="/account" 
+        <NavLink onClick={onLinkClick} to="/account" 
             className={({ isActive }) => 
             `rounded transition-colors flex flex-col items-center ${
                 isActive 

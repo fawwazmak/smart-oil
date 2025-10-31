@@ -35,7 +35,7 @@ const DashboardPage = () => {
     ];
   return (
     <div className='bg-[#101624] p-4'>
-        <h1 className='text-white md:text-4xl'>Dashboard</h1>
+        <h1 className='text-white md:text-4xl text-3xl'>Dashboard</h1>
 
         <div className='flex md:flex-row flex-col md:space-x-6 md:space-y-0 space-y-4 my-8 justify-between'>
             <DashboardCard title="Tank Monitored" value={9.829} unit="Ltr" />

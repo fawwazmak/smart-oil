@@ -35,7 +35,7 @@ const ForecastingPage = () => {
 
   return (
     <div className="min-h-screen bg-[#101624] text-white p-6 font-sans">
-      <h1 className="text-3xl font-bold mb-6 text-white">AI Forecast</h1>
+      <h1 className="md:text-4xl text-3xl font-bold mb-6 text-white">AI Forecast</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Forecast Chart */}

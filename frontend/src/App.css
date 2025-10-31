@@ -1,0 +1,40 @@
+:root {
+	--bg: #141a28;
+	--panel: #171e28;
+	--muted: #9aa4b2;
+	--accent: #17b6d9;
+	--card: #17202b;
+}
+
+html, body, #root {
+	height: 100%;
+}
+
+body {
+	font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(180deg, #0f1620 0%, #141a28 100%);
+	color: #dbe7ef;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-overflow-scrolling: touch;
+}
+
+.app-container {
+	min-height: 100vh;
+}
+
+.card {
+	background-color: var(--card);
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 14px rgba(8, 18, 28, 0.6);
+}
+@import "tailwindcss";
+
+
+/* subtle custom scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 999px; }

@@ -1,0 +1,136 @@
+stall to do
+Let’s walk you through exactly how to make your first request in Postman step by step. This will show you how to “write” or send data to your backend through your API.
+
+How to Create and Send a Request in Postman
+1. Open Postman
+Let it load to your dashboard as seen in your screenshot.
+
+2. Click on "Workspaces" > "My Workspace" then click the "New" button (upper left).
+Select "HTTP Request" from the options.
+
+3. Set up your request
+Set the method (dropdown left of the URL box) to POST.
+
+In the URL field, enter:
+
+text
+http://localhost:5000/api/tanks
+(to create a tank first, because you need a tank id)
+
+4. Set up the Body
+Click the "Body" tab under the URL.
+
+Select the "raw" radio button.
+
+Set the type on the right of "raw" to JSON.
+
+Paste this JSON into the big text box:
+
+json
+{
+  "name": "Tank 1",
+  "capacity": 10000,
+  "station": "Station A"
+}
+5. Send the Request
+Click the blue "Send" button.
+
+6. Copy the ID
+You will see a response below with something like:
+
+json
+{
+  "_id": "650ef3c85b6f8c0012345678",
+  "name": "Tank 1",
+  ...
+}
+Copy this _id value. You’ll use it in the next step.
+
+Now—Send an "Inventory Event"
+1. Create a new POST request in Postman.
+Set method to POST.
+
+URL:
+
+text
+http://localhost:5000/api/inventory/event
+Body tab: Raw, type JSON.
+
+Paste this, replacing "THE_ID_YOU_COPIED" with your copied tank id:
+
+json
+{
+  "tankId": "THE_ID_YOU_COPIED",
+  "station": "Station A",
+  "level": 5820
+}
+Click Send.
+
+You have now sent (written) data to your backend—just like your hardware will do!
+
+How to Create and Send a Request in Postman
+1. Open Postman
+Let it load to your dashboard as seen in your screenshot.
+
+2. Click on "Workspaces" > "My Workspace" then click the "New" button (upper left).
+Select "HTTP Request" from the options.
+
+3. Set up your request
+Set the method (dropdown left of the URL box) to POST.
+
+In the URL field, enter:
+
+text
+http://localhost:5000/api/tanks
+(to create a tank first, because you need a tank id)
+
+4. Set up the Body
+Click the "Body" tab under the URL.
+
+Select the "raw" radio button.
+
+Set the type on the right of "raw" to JSON.
+
+Paste this JSON into the big text box:
+
+json
+{
+  "name": "Tank 1",
+  "capacity": 10000,
+  "station": "Station A"
+}
+5. Send the Request
+Click the blue "Send" button.
+
+6. Copy the ID
+You will see a response below with something like:
+
+json
+{
+  "_id": "650ef3c85b6f8c0012345678",
+  "name": "Tank 1",
+  ...
+}
+Copy this _id value. You’ll use it in the next step.
+
+Now—Send an "Inventory Event"
+1. Create a new POST request in Postman.
+Set method to POST.
+
+URL:
+
+text
+http://localhost:5000/api/inventory/event
+Body tab: Raw, type JSON.
+
+Paste this, replacing "THE_ID_YOU_COPIED" with your copied tank id:
+
+json
+{
+  "tankId": "THE_ID_YOU_COPIED",
+  "station": "Station A",
+  "level": 5820
+}
+Click Send.
+
+You have now sent (written) data to your backend—just like your hardware will do!
